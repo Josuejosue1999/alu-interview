@@ -1,20 +1,24 @@
 #!/usr/bin/python3
-#Minimum Operations
+# In a text file, there is a single character H. Your text editor
+can execute only two operations in this file: `Copy All` and `Paste`.
 
-def min_operations_to_generate_h(n):
-    clipboard = 0  # Initialize clipboard to 0 H's
-    operations = 0  # Initialize the number of operations to 0
+@TODO:
+    Deines a method that calculates the fewest number of operations
+    needed to result in exactly n H characters in the file.
 
-    while clipboard < n:
-        if n % clipboard == 0:
-            clipboard = clipboard * 2  # Double the clipboard size
-            operations += 1
-        else:
-            clipboard += clipboard  # Copy all
-            operations += 1
 
-    return operations
-
-n = 9
-result = min_operations_to_generate_h(n)
-print("Number of operations:", result)
+def minOperations(n):
+    Calculates the fewest number of operations
+    needed to result in exactly n H characters in the file.
+    Args:
+        n (int): length of letter `H` required in the file
+    Returns:
+        (int): number of minimum operations if possible otherwise 0
+    minimumOperations = 2
+    totalOperations = 0
+    while n > 1:
+        while n % minimumOperations == 0:
+            totalOperations += minimumOperations
+            n /= minimumOperations
+        minimumOperations += 1
+    return totalOperations
